@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Events from "./pages/Events";
 import AdminPanel from "./pages/Admin"; // Correct path based on your folder image
 import { useAuth } from "./context/AuthContext";
-import { initGoogleCalendar } from "./services/googleCalendar"; // Corrected import path
+import { initGoogleCalendar } from "./services/googleCalendar"; 
 
 const ADMIN_EMAIL = "prathameshjawale1804@gmail.com";
 
@@ -24,6 +24,7 @@ export default function App() {
     };
     setup();
   }, []);
+
 
   if (authLoading || calendarLoading) {
     return (

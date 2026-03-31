@@ -92,11 +92,9 @@ export const addEventToCalendar = async ({
 
     const token = gapi.client.getToken();
 
-    // ✅ Correct logic
     if (!token) {
       tokenClient.requestAccessToken({ prompt: "consent" });
     } else {
-      // refresh token silently
       tokenClient.requestAccessToken({ prompt: "" });
     }
   });

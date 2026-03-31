@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DOMPurify from "dompurify";
 import { CalendarDays, PlusCircle, ListChecks } from "lucide-react";
 import {
   collection,
@@ -44,10 +45,14 @@ function Admin() {
 
       const eventDate = new Date(date);
 
+      const sanitizedTitle = DOMPurify.sanitize(title);
+      const sanitizedVenue = DOMPurify.sanitize(venue);
+      const sanitizedCategory = DOMPurify.sanitize(category);
+
       const payload = {
-        title,
-        venue,
-        category,
+        title: sanitizedTitle,
+        venue: sanitizedVenue,
+        category: sanitizedCategory,
         date: Timestamp.fromDate(eventDate),
         createdAt: Timestamp.now(),
       };
@@ -61,9 +66,9 @@ function Admin() {
 
       // 🔹 Auto Google Calendar sync
       await addEventToCalendar({
-        title,
-        venue,
-        category,
+        title: sanitizedTitle,
+        venue: sanitizedVenue,
+        category: sanitizedCategory,
         startDate: eventDate,
       });
 

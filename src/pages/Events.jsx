@@ -75,6 +75,7 @@ export default function Events() {
                 addEventToCalendar({
                   title: e.title,
                   venue: e.venue,
+                  category: e.category,
                   startDate: e.date.toDate(),
                 });
               }}
